@@ -7,6 +7,8 @@
 #define MIN_SIZE = 0.25;
 #define MAX_SIZE = 1.0;
 
+//Structure based on required input needed for the Truck Delivery software.
+//Author: Jaaved Dewan
 struct Shipment
 {
 	int m_weight; //Between 1 to 1000 kg
