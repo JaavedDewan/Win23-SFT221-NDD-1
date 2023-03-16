@@ -1,5 +1,6 @@
 #ifndef TRUCK_H
 #define TRUCK_H
+#include "Shipment.h"
 #define MAXWEIGHT = 1000.0 //kg of cargo
 #define MAXVOLUME = 36.0 //cubic meters of boxes
 
@@ -9,6 +10,7 @@ struct Truck
 {
     double weight;// max 1000 kg of cargo
     double volume; // max 36 cubic meters of boxes
+    struct Shipment box; //can hold array of boxes if needed with //struct Shipment box[MAXSHIPMENTS]
 };
 
 #endif
