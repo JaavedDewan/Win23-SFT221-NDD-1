@@ -7,3 +7,4 @@ Members:
 2. Brian Cheung
 3. Jaaved Dewan
 4. Marcus Brown
+5. Eric Ter-Sarkisov
