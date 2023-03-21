@@ -16,4 +16,6 @@ struct Shipment
 	char m_destination[3]; //Max 3 characters
 };
 
+void process_shipments(const struct Shipment* shipment);
+
 #endif
