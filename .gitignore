@@ -49,3 +49,4 @@ Debug/
 *.exe
 *.out
 *.app
+/TruckDelivery/Sft_project/*.sln
