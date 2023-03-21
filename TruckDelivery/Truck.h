@@ -4,7 +4,7 @@
 #define MAXWEIGHT = 1000.0 //kg of cargo
 #define MAXVOLUME = 36.0 //cubic meters of boxes
 
-//Struct that tracks status of trucks.
+//Struct that tracks status of trucks
 //Author: Marcus Brown
 struct Truck
 {
