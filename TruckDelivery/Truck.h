@@ -1,8 +1,8 @@
 #ifndef TRUCK_H
 #define TRUCK_H
 #include "Shipment.h"
-#define MAXWEIGHT = 1000.0 //kg of cargo
-#define MAXVOLUME = 36.0 //cubic meters of boxes
+#define MAXWEIGHT 1000.0 //kg of cargo
+#define MAXVOLUME 36.0 //cubic meters of boxes
 
 //Struct that tracks status of trucks
 //Author: Marcus Brown
@@ -14,5 +14,6 @@ struct Truck
     char destinations[25][4]; //list of maximum 25 destinations each with a 3-character string
     int num_destinations; //number of valid destination codes
 };
+
 
 #endif
