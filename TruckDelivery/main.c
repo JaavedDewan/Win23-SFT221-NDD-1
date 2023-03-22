@@ -10,8 +10,8 @@ int main(void)
 	struct Route yellowRoute = getYellowRoute();
 
 	struct Map routeMap = addRoute(&baseMap, &blueRoute);
-	struct Map routeMap2 = addRoute(&baseMap, &greenRoute);
-	struct Map routeMap3 = addRoute(&baseMap, &yellowRoute);
+	struct Map routeMap2 = addRoute(&routeMap, &greenRoute);
+	struct Map routeMap3 = addRoute(&routeMap2, &yellowRoute);
 
 	printMap(&routeMap3, 1, 1);
 
