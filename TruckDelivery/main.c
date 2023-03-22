@@ -6,9 +6,14 @@ int main(void)
 {
 	struct Map baseMap = populateMap();
 	struct Route blueRoute = getBlueRoute();
-	struct Map routeMap = addRoute(&baseMap, &blueRoute);
+	struct Route greenRoute = getGreenRoute();
+	struct Route yellowRoute = getYellowRoute();
 
-	printMap(&routeMap, 1, 1);
+	struct Map routeMap = addRoute(&baseMap, &blueRoute);
+	struct Map routeMap2 = addRoute(&baseMap, &greenRoute);
+	struct Map routeMap3 = addRoute(&baseMap, &yellowRoute);
+
+	printMap(&routeMap3, 1, 1);
 
 	return 0;
 }
