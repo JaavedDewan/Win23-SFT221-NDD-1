@@ -9,7 +9,7 @@
 //Author: Jaaved Dewan
 
 //Brian Cheung: Input validation, 
-void process_shipments(const struct Shipment* shipment) {
+void process_shipments(struct Shipment* shipment) {
 	int flag = 0;
 	printf("=================\n");
 	printf("Seneca Deliveries\n");
@@ -22,11 +22,11 @@ void process_shipments(const struct Shipment* shipment) {
 		do {
 			printf("Enter shipment weight, box size and destination (0 0 x to stop): ");
 			scanf("%d %2.1f %3[^\n]", &shipment->m_weight, &shipment->m_size, shipment->m_destination);
-			if (!shipment->m_weight && !shipment->m_size && shipment->m_destination[0] == 'x') {
+			if (!shipment->m_weight && !shipment->m_size && shipment->m_destination[0] == 'x') {//exit condit
 				flag = 1;
 				break;
 			} 
-			sscanf(shipment->m_destination, "%d%c", &yAxis, &xAxis);
+			sscanf(shipment->m_destination, "%d%c", &yAxis, &xAxis);//parse string
 
 			if (shipment->m_weight < MIN_WEIGHT || shipment->m_weight > MAX_WEIGHT) {
 				printf("Invalid weight (must be 1-1000 Kg.)\n");
@@ -42,7 +42,7 @@ void process_shipments(const struct Shipment* shipment) {
 			shipment->m_size < MIN_SIZE || shipment->m_size > MAX_SIZE ||
 			yAxis < MIN_YAXIS || yAxis > MAX_YAXIS || xAxis < 'a' || xAxis > 'y');
 
-		findPath(shipment->m_weight, shipment->m_size, &shipment->m_destination);
+		findPath(&shipment);
 
 	} while (!flag);
 
@@ -108,8 +108,11 @@ void process_shipments(const struct Shipment* shipment) {
 	//}
 }
 
-void findPath(const int weight, const double size, const char* destination){
-
+//TO DO:
+//find path for shipment, should figure out which truck first then path, and finally divert path if any
+//
+void findPath(const struct Shipment* shipment){
+	//whichTruck();
 
 }
 

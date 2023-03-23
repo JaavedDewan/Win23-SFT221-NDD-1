@@ -14,6 +14,6 @@ struct Truck
     char destinations[25][4]; //list of maximum 25 destinations each with a 3-character string
     int num_destinations; //number of valid destination codes
 };
-
-
+int whichTruck(const struct Map* map1, const struct Map* map2, const struct Map* map3, char m_destination[3]);
+struct Truck* cmpTruck(const struct Truck* T1, const struct Truck* T2);
 #endif

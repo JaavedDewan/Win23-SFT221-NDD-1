@@ -19,6 +19,6 @@ struct Shipment
 	char m_destination[DEST_COORDINATE + 1]; //Max 3 characters
 };
 
-void process_shipments(const struct Shipment* shipment);
-void findPath(const int weight, const double size, const char* destination);
+void process_shipments(struct Shipment* shipment);
+void findPath(const struct Shipment* shipment);
 #endif
