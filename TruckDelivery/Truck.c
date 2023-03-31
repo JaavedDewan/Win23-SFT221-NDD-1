@@ -9,7 +9,7 @@
 int whichTruck(const struct Map* map1, const struct Map* map2, const struct Map* map3, char m_destination[3]) {
 
 	//not going to work since can be 3 chars long should be handled in shipment read function (ie. 12B) then pass struct Point into this function
-	const struct Point dest = { colValue, rowValue };
+	//const struct Point dest = { colValue, rowValue };
 
 
 	// struct Map baseMap = populateMap();

@@ -11,6 +11,7 @@
 //Brian Cheung: Input validation, 
 void process_shipments(struct Shipment* shipment) {
 	int flag = 0;
+	int valid = 0;
 	printf("=================\n");
 	printf("Seneca Deliveries\n");
 	printf("=================\n");
@@ -21,28 +22,40 @@ void process_shipments(struct Shipment* shipment) {
 		char xAxis = 0;
 		do {
 			printf("Enter shipment weight, box size and destination (0 0 x to stop): ");
-			scanf("%d %2.1f %3[^\n]", &shipment->m_weight, &shipment->m_size, shipment->m_destination);
+			scanf("%d %lf %3[^\n]", &shipment->m_weight, &shipment->m_size, shipment->m_destination);
 			if (!shipment->m_weight && !shipment->m_size && shipment->m_destination[0] == 'x') {//exit condit
 				flag = 1;
+				valid = 1;
 				break;
-			} 
+			}
 			sscanf(shipment->m_destination, "%d%c", &yAxis, &xAxis);//parse string
-
+			printf("\n%d %lf %s %d %c\n", shipment->m_weight, shipment->m_size, shipment->m_destination, yAxis, xAxis);
 			if (shipment->m_weight < MIN_WEIGHT || shipment->m_weight > MAX_WEIGHT) {
 				printf("Invalid weight (must be 1-1000 Kg.)\n");
 			}
-			if (shipment->m_size < MIN_SIZE || shipment->m_size > MAX_SIZE) {
+			else if (shipment->m_size < MIN_SIZE || shipment->m_size > MAX_SIZE) {
 				printf("Invalid size\n");
 			}
-			if (yAxis < MIN_YAXIS || yAxis > MAX_YAXIS || xAxis < 'a' || xAxis > 'y') {
+			else if (yAxis < MIN_YAXIS || yAxis > MAX_YAXIS || xAxis < 'A' || xAxis > 'Y') {
 				printf("Invalid destination\n");
 			}
+			else {
+				valid = 1;
+			}
 
-		} while (shipment->m_weight < MIN_WEIGHT || shipment->m_weight > MAX_WEIGHT ||
-			shipment->m_size < MIN_SIZE || shipment->m_size > MAX_SIZE ||
-			yAxis < MIN_YAXIS || yAxis > MAX_YAXIS || xAxis < 'a' || xAxis > 'y');
+		} while (!valid);
 
-		findPath(&shipment);
+		//struct Point P = { xAxis , yAxis };
+		//int truck = whichTruck(&mapB, &mapG, &mapY, P);
+		//if (truck == 1) {
+		//	printf("Ship on BLUE LINE, \n");
+		//}
+		//else if (truck == 2) {
+		//	printf("Ship on GREEN LINE, \n");
+		//}
+		//else if (truck == 3) {
+		//	printf("Ship on YELLOW LINE, \n");
+		//}
 
 	} while (!flag);
 
