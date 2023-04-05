@@ -44,18 +44,101 @@ void process_shipments(struct Shipment* shipment) {
 			}
 
 		} while (!valid);
-
-		//struct Point P = { xAxis , yAxis };
-		//int truck = whichTruck(&mapB, &mapG, &mapY, P);
-		//if (truck == 1) {
-		//	printf("Ship on BLUE LINE, \n");
-		//}
-		//else if (truck == 2) {
-		//	printf("Ship on GREEN LINE, \n");
-		//}
-		//else if (truck == 3) {
-		//	printf("Ship on YELLOW LINE, \n");
-		//}
+		//map is zero indexed so have to -1
+		int x = 0;//done in switch statement
+		int y = yAxis - 1;
+		switch (xAxis)
+{
+case 'A':
+	x = 0;
+	break;
+case 'B':
+	x = 1;
+	break;
+case 'C':
+	x = 2;
+	break;
+case 'D':
+	x = 3;
+	break;
+case 'E':
+	x = 4;
+	break;
+case 'F':
+	x = 5;
+	break;
+case 'G':
+	x = 6;
+	break;
+case 'H':
+	x = 7;
+	break;
+case 'I':
+	x = 8;
+	break;
+case 'J':
+	x = 9;
+	break;
+case 'K':
+	x = 10;
+	break;
+case 'L':
+	x = 11;
+	break;
+case 'M':
+	x = 12;
+	break;
+case 'N':
+	x = 13;
+	break;
+case 'O':
+	x = 14;
+	break;
+case 'P':
+	x = 15;
+	break;
+case 'Q':
+	x = 16;
+	break;
+case 'R':
+	x = 17;
+	break;
+case 'S':
+	x = 18;
+	break;
+case 'T':
+	x = 19;
+	break;
+case 'U':
+	x = 20;
+	break;
+case 'V':
+	x = 21;
+	break;
+case 'W':
+	x = 22;
+	break;
+case 'X':
+	x = 23;
+	break;
+case 'Y':
+	x = 24;
+	break;
+default:
+	break;
+}
+			struct Point P = { x , y };
+		const struct Map baseMap = populateMap();
+		int truck = whichTruck(&baseMap, P);
+		if (truck == 1) {
+			printf("Ship on BLUE LINE, \n");
+		}
+		else if (truck == 2) {
+			printf("Ship on GREEN LINE, \n");
+		}
+		else if (truck == 3) {
+			printf("Ship on YELLOW LINE, \n");
+		}
 
 	} while (!flag);
 
