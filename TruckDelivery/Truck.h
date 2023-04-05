@@ -1,6 +1,7 @@
 #ifndef TRUCK_H
 #define TRUCK_H
 #include "Shipment.h"
+#include "mapping.h"
 #define MAXWEIGHT 1000.0 //kg of cargo
 #define MAXVOLUME 36.0 //cubic meters of boxes
 
@@ -14,6 +15,6 @@ struct Truck
     char destinations[25][4]; //list of maximum 25 destinations each with a 3-character string
     int num_destinations; //number of valid destination codes
 };
-int whichTruck(const struct Map* map1, const struct Map* map2, const struct Map* map3, char m_destination[3]);
+int whichTruck(const struct Map* baseMap, struct Point dest);
 struct Truck* cmpTruck(const struct Truck* T1, const struct Truck* T2);
 #endif
