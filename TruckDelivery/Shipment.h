@@ -1,6 +1,7 @@
-#pragma once
 #ifndef SHIPMENT_H
 #define SHIPMENT_H
+#include "Truck.h"
+#include "mapping.h"
 
 #define MIN_WEIGHT 1
 #define MAX_WEIGHT 1000
@@ -19,6 +20,6 @@ struct Shipment
 	char m_destination[DEST_COORDINATE + 1]; //Max 3 characters
 };
 
-void process_shipments(struct Shipment* shipment);
+void process_shipments(struct Truck* trucksPtr);
 void findPath(const struct Shipment* shipment);
 #endif

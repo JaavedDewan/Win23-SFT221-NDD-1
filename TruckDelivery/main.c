@@ -15,13 +15,18 @@ int main(void)
 	const struct Map routeMap2 = addRoute(&routeMap, &greenRoute);
 	const struct Map routeMap3 = addRoute(&routeMap2, &yellowRoute);
 
-	// struct Truck truck1 = {0,0,0,0,0};
-	// struct Truck truck2 = {0,0,0,0,0};
-	// struct Truck truck3 = {0,0,0,0,0};
+
+	struct Truck trucks[3];
+	for (int i = 0; i < 3; i++)
+	{
+		trucks[i].volume = 0.0;
+		trucks[i].weight = 0;
+	}
+	struct Truck* ptr = trucks;
 
 	struct Shipment shipment;
 
-	process_shipments(&shipment);
+	process_shipments(ptr);
 	printMap(&routeMap3, 1, 1);
 
 	return 0;

@@ -9,12 +9,14 @@
 //Author: Marcus Brown
 struct Truck
 {
-    double weight;// max 1000 kg of cargo
+    int weight;// max 1000 kg of cargo
     double volume; // max 36 cubic meters of boxes
-    struct Shipment box; //can hold array of boxes if needed with //struct Shipment box[MAXSHIPMENTS]
-    char destinations[25][4]; //list of maximum 25 destinations each with a 3-character string
-    int num_destinations; //number of valid destination codes
+    struct Shipment* shipment;
 };
-int whichTruck(const struct Map* baseMap, struct Point dest);
-struct Truck* cmpTruck(const struct Truck* T1, const struct Truck* T2);
+int whichTruck(const struct Map* baseMap, struct Point dest, struct Truck* trucks_Ptr);
+int cmpTruck(struct Truck* trucksPtr, int truckIdx1, int truckIdx2);
+int checkWeight(struct Truck* truckPtr, int truckIdx, int weight);
+void addWeight(struct Truck* truckPtr, int truckIdx, int weight);
+int checkVolume(struct Truck* trucksPtr, int truckIdx, double volume);
+void addVolume(struct Truck* trucksPtr, int truckIdx, double volume);
 #endif
