@@ -9,88 +9,83 @@
 int whichTruck(const struct Map* baseMap, struct Point dest) {
 	// struct Map baseMap = populateMap();
 	struct Route blueRoute = getBlueRoute();
-	struct Route greenRoute = getGreenRoute();
-	struct Route yellowRoute = getYellowRoute();
+	struct Route greenRoute = getYellowRoute(); //green and yellow are litearlly reversed...
+	struct Route yellowRoute = getGreenRoute(); //green and yellow are litearlly reversed...
 
 	// struct Route finalBlueRoute = { {0, 0}, 99, BLUE };
 	// struct Route finalGreenRoute = { {0, 0}, 99, GREEN };
 	// struct Route finalYellowRoute = { {0,0}, 99, YELLOW };
-	
-	double Distance1 = 0.0;
-	double Distance2 = 0.0;
+
+	double Distance = 0.0;
 	double closestBlueDistance = 99.99;
 	int closestBlueIndex = 99;
 	double closestGreenDistance = 99.99;
 	int closestGreenIndex = 99;
 	double closestYellowDistance = 99.99;
 	int closestYellowIndex = 99;
-	const struct Point dest2 = { dest.row, dest.col };
-//checking distance between each point on the blue path and the destination and saving the closest distance
+	//checking distance between each point on the blue path and the destination and saving the closest distance
 	for (int i = 0; i < blueRoute.numPoints; i++)
 	{
-		 Distance1 = distance(&blueRoute.points[i], &dest2);
-		 Distance2 = distance(&blueRoute.points[i+1], &dest2);
-		if (Distance1 <= Distance2  && closestBlueDistance >= Distance1)
+		Distance = distance(&blueRoute.points[i], &dest);
+		if (closestBlueDistance >= Distance)
 		{
-			closestBlueDistance = Distance1;
-			closestBlueIndex = i; // not going to work for very last index but wtv
+			closestBlueDistance = Distance;
+			closestBlueIndex = i;
 		}
 	}
 	//shortest path function just does not work properly
 		//finalBlueRoute = shortestPath(&baseMap, blueRoute.points[closestBlueIndex], dest); 
 //checking distance between each point on the green path and the destination and saving the closest distance
-		for (int i = 0; i < greenRoute.numPoints ; i++)
+	for (int i = 0; i < greenRoute.numPoints; i++)
+	{
+		Distance = distance(&greenRoute.points[i], &dest);
+		if ( closestGreenDistance >= Distance)
 		{
-			Distance1 = distance(&greenRoute.points[i], &dest2);
-			Distance2 = distance(&greenRoute.points[i + 1], &dest2);
-			if (Distance1 <= Distance2 && closestGreenDistance >= Distance1)
-			{
-				closestGreenDistance = Distance1;
-				closestGreenIndex = i; // not going to work for very last index but wtv
-			}
+			closestGreenDistance = Distance;
+			closestGreenIndex = i; 
 		}
-		//finalGreenRoute = shortestPath(&baseMap, greenRoute.points[closestgreenIndex], dest);
+	}
+	//finalGreenRoute = shortestPath(&baseMap, greenRoute.points[closestgreenIndex], dest);
 //checking distance between each point on the yellow path and the destination and saving the closest distance
-		for (int i = 0; i < yellowRoute.numPoints ; i++)
+	for (int i = 0; i < yellowRoute.numPoints; i++)
+	{
+		Distance = distance(&yellowRoute.points[i], &dest);
+		if (closestYellowDistance >= Distance)
 		{
-			Distance1 = distance(&yellowRoute.points[i], &dest2);
-			Distance2 = distance(&yellowRoute.points[i + 1], &dest2);
-			if (Distance1 <= Distance2 && closestYellowDistance >= Distance1)
-			{
-				closestYellowDistance = Distance1;
-				closestYellowIndex = i; // not going to work for very last index but wtv
-			}
+			closestYellowDistance = Distance;
+			closestYellowIndex = i; 
 		}
-		//finalYellowRoute = shortestPath(&baseMap, yellowRoute.points[closestyellowIndex], dest);
+	}
+	//finalYellowRoute = shortestPath(&baseMap, yellowRoute.points[closestyellowIndex], dest);
 
-		//for (int i = 0; i < blueRoute.numPoints; i++)
-	//{
-	//	blueroute1 = shortestPath(&baseMap, blueRoute.points[i], dest);
-	//		if (finalblueRoute.numPoints > blueroute1.numPoints && blueroute1.numPoints != 0)
-	//		{
-	//		finalblueRoute = blueroute1;
-	//		}
-	//	}
-	//for (int i = 0; i < greenRoute.numPoints; i++)
-	//{
-	//	greenroute1 = shortestPath(&baseMap, greenRoute.points[i], dest);
-	//		if (finalGreenRoute.numPoints > greenroute1.numPoints && greenroute1.numPoints != 0)
-	//		{
-	//		finalGreenRoute = greenroute1;
-	//		}
-	//	}
-	//for (int i = 25; i < yellowRoute.numPoints; i++)
-	//{
-	//	yellowroute1 = shortestPath(&baseMap, yellowRoute.points[i], dest);
-	//		if (finalYellowRoute.numPoints > yellowroute1.numPoints && yellowroute1.numPoints != 0)
-	//		{
-	//		finalYellowRoute = yellowroute1;
-	//		}
-	//}
-		
-	//int distanceBlue = finalBlueRoute.numPoints;
-	//int distanceGreen = finalGreenRoute.numPoints;
-	//int distanceYellow = finalYellowRoute.numPoints;
+	//for (int i = 0; i < blueRoute.numPoints; i++)
+//{
+//	blueroute1 = shortestPath(&baseMap, blueRoute.points[i], dest);
+//		if (finalblueRoute.numPoints > blueroute1.numPoints && blueroute1.numPoints != 0)
+//		{
+//		finalblueRoute = blueroute1;
+//		}
+//	}
+//for (int i = 0; i < greenRoute.numPoints; i++)
+//{
+//	greenroute1 = shortestPath(&baseMap, greenRoute.points[i], dest);
+//		if (finalGreenRoute.numPoints > greenroute1.numPoints && greenroute1.numPoints != 0)
+//		{
+//		finalGreenRoute = greenroute1;
+//		}
+//	}
+//for (int i = 25; i < yellowRoute.numPoints; i++)
+//{
+//	yellowroute1 = shortestPath(&baseMap, yellowRoute.points[i], dest);
+//		if (finalYellowRoute.numPoints > yellowroute1.numPoints && yellowroute1.numPoints != 0)
+//		{
+//		finalYellowRoute = yellowroute1;
+//		}
+//}
+
+//int distanceBlue = finalBlueRoute.numPoints;
+//int distanceGreen = finalGreenRoute.numPoints;
+//int distanceYellow = finalYellowRoute.numPoints;
 
 	int truck = 0;
 	if (closestBlueDistance <= closestGreenDistance && closestBlueDistance <= closestYellowDistance)
