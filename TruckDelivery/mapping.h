@@ -9,32 +9,26 @@
 #define GREEN 4
 #define YELLOW 8
 #define DIVERSION 16
-
 /**
 * A map is a 2D raster representation of a map with contents of the map encoded as numeric values.
 */
-struct Map
-{
+struct Map {
 	int squares[MAP_ROWS][MAP_COLS];
 	int numRows;
 	int numCols;
 };
-
 /**
 * A point represents the row-column position of a square on a map.
 */
-struct Point
-{
-	char row;
-	char col;
+struct Point{
+	int row;
+	int col;
 };
-
 /**
 * A route is a collection of points that are adjacent to one another and constitute a path from the 
 * first point on the path to the last.
 */
-struct Route
-{
+struct Route{
 	struct Point points[MAX_ROUTE];
 	int numPoints;
 	char routeSymbol;

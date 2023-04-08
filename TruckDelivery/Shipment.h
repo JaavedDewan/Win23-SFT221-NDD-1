@@ -21,5 +21,6 @@ struct Shipment
 };
 
 void process_shipments(struct Truck* trucksPtr);
-void findPath(const struct Shipment* shipment);
+void findDiversion(const int truck, const struct Point P);
+void printDiversion(const struct Route *diversion);
 #endif
