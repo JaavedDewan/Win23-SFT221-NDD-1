@@ -226,10 +226,12 @@ struct Route shortestPath(const struct Map* map, const struct Point start, const
 	struct Route result = { {0,0}, 0, DIVERSION };
 	struct Point last = { -1, -1 };
 	struct Point current = start;
+	struct Point destin = dest;
 	struct Route possible = { {0,0},0,0 };
 	int close = 0;
 	int done = 0;
 	struct Route finish = getPossibleMoves(map, dest, last);
+	addPtToRoute(&result, current);
 	while (!done && close >= 0)
 	{
 		possible = getPossibleMoves(map, current, last);
@@ -238,11 +240,14 @@ struct Route shortestPath(const struct Map* map, const struct Point start, const
 		{
 			last = current;
 			current = possible.points[close];
+			current.col--;
 			addPtToRoute(&result, current);
+			current.col++;
 			for (size_t i = 0; i < finish.numPoints; i++) if (eqPt(current, finish.points[i]))done = 1;
 		}
 	}
-
+	destin.col++;
+	addPtToRoute(&result, destin);
 	return result;
 }
 

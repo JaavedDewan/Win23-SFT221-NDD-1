@@ -160,22 +160,24 @@ void findDiversion(const int truck, const struct Point P) {
 	struct Route route = { {0,0}, 0, 0 };
 	struct Route divertRoute = { {0,0}, 0, 0 };
 	struct Map map = populateMap();
-	if (truck == 1) {
+	if (truck == 1) {//blue 
 		route = getBlueRoute();
 	}
-	else if (truck == 2) {
-		route = getGreenRoute();
-	}
-	else if (truck == 3) {
+	else if (truck == 2) {//green
 		route = getYellowRoute();
 	}
+	else if (truck == 3) {//yellow
+		route = getGreenRoute();
+	}
 	int i = getClosestPoint(&route, P);
-	divertRoute = shortestPath(&map, route.points[i], P);
-	if (divertRoute.numPoints == 1) {
+	divertRoute = shortestPath(&map, route.points[i], P);//shortestPath() fixed, see mapping module
+	if (divertRoute.numPoints <= 3) {
 		printf("no diversion\n");
 	}
 	else {
+		printf("divert: ");
 		printDiversion(&divertRoute);
+		printf("\n");
 	}
 }
 //Brian Cheung: Displays divertions
@@ -183,86 +185,84 @@ void printDiversion(const struct Route* diversion) {
 	for (size_t i = 0; i < diversion->numPoints; i++) {
 		char n = 0;
 		switch (diversion->points[i].row) {
-		case 23:
+		case 24:
 			n = 'Y';
 			break;
-		case 22:
+		case 23:
 			n = 'X';
 			break;
-		case 21:
+		case 22:
 			n = 'W';
 			break;
-		case 20:
+		case 21:
 			n = 'V';
 			break;
-		case 19:
+		case 20:
 			n = 'U';
 			break;
-		case 18:
+		case 19:
 			n = 'T';
 			break;
-		case 17:
+		case 18:
 			n = 'S';
 			break;
-		case 16:
+		case 17:
 			n = 'R';
 			break;
-		case 15:
+		case 16:
 			n = 'Q';
 			break;
-		case 14:
+		case 15:
 			n = 'P';
 			break;
-		case 13:
+		case 14:
 			n = 'O';
 			break;
-		case 12:
+		case 13:
 			n = 'N';
 			break;
-		case 11:
+		case 12:
 			n = 'M';
 			break;
-		case 10:
+		case 11:
 			n = 'L';
 			break;
-		case 9:
+		case 10:
 			n = 'K';
 			break;
-		case 8:
+		case 9:
 			n = 'J';
 			break;
-		case 7:
+		case 8:
 			n = 'I';
 			break;
-		case 6:
+		case 7:
 			n = 'H';
 			break;
-		case 5:
+		case 6:
 			n = 'G';
 			break;
-		case 4:
+		case 5:
 			n = 'F';
 			break;
-		case 3:
+		case 4:
 			n = 'E';
 			break;
-		case 2:
+		case 3:
 			n = 'D';
 			break;
-		case 1:
+		case 2:
 			n = 'C';
 			break;
-		case 0:
+		case 1:
 			n = 'B';
 			break;
 		default:
 			n = 'A';
 			break;
 		}
-		printf("%d%c", diversion->points[i].col - 1,n);
-		if (i != diversion->numPoints - 1) {
-			printf(", ");
-		}
+		printf("%d%c", diversion->points[i].col,n);
+		if (i != diversion->numPoints - 1) printf(", ");
 	}
 }
 
