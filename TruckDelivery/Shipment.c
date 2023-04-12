@@ -21,8 +21,13 @@ void process_shipments(struct Truck* trucksPtr) {
 		char xAxis = 0;
 		do {
 			printf("Enter shipment weight, box size and destination (0 0 x to stop): ");
-			scanf("%d %lf %3[^\n]", &shipment.m_weight, &shipment.m_size, shipment.m_destination);
-			if (!shipment.m_weight && !shipment.m_size && shipment.m_destination[0] == 'x') {//exit condit
+			int numValuesRead = scanf("%d %lf %3s", &shipment.m_weight, &shipment.m_size, shipment.m_destination);
+			if (numValuesRead != 3) { //makes sure there are three spaces in the input which will be ignored
+				printf("Invalid input format. Please enter three values separated by spaces.\n");
+				while (getchar() != '\n'); // Clear input buffer
+				continue;
+			}
+			if (shipment.m_weight == 0 && shipment.m_size == 0 && strcmp(shipment.m_destination, "x") == 0) {
 				flag = 1;
 				valid = 1;
 				break;
